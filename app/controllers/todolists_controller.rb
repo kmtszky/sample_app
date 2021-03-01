@@ -9,8 +9,8 @@ class TodolistsController < ApplicationController
     list = List.new(list_params)
     #データをデータベースへ保存するためのsaveメソッド
     list.save
-    #top画面へリダイレクト
-    redirect_to '/top'
+    #show.html.erbへリダイレクトさせて、投稿内容をすぐ閲覧できるようにする
+    redirect_to todolist_path(list.id)
   end
 
   def index
