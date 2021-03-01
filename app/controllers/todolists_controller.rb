@@ -4,8 +4,11 @@ class TodolistsController < ApplicationController
   end
 
   def create
+    #データを新規登録するためのインスタンス
     list = List.new(list_params)
+    #データをデータベースへ保存するためのsaveメソッド
     list.save
+    #top画面へリダイレクト
     redirect_to '/top'
   end
 
