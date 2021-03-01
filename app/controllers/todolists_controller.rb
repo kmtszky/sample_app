@@ -12,10 +12,15 @@ class TodolistsController < ApplicationController
     #top画面へリダイレクト
     redirect_to '/top'
   end
-  
+
   def index
     #すべてのデータを取り込むため複数形[@lists]となっている
-    @lists=List.all
+    @lists = List.all
+  end
+
+  def show
+    #findメソッドを利用してデータベースから:idのデータを取得
+    @list = List.find(params[:id])
   end
 
   private
