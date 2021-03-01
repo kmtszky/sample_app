@@ -5,17 +5,22 @@ class TodolistsController < ApplicationController
   end
 
   def create
-    #データを新規登録するためのインスタンス。viewを介さないため@
+    #データを新規登録するためのインスタンス。viewを介さないため@なし
     list = List.new(list_params)
     #データをデータベースへ保存するためのsaveメソッド
     list.save
-    #top画面へリダイレクト
-    redirect_to '/top'
+    #show.html.erbへリダイレクトさせて、投稿内容をすぐ閲覧できるようにする
+    redirect_to todolist_path(list.id)
   end
-  
+
   def index
     #すべてのデータを取り込むため複数形[@lists]となっている
-    @lists=List.all
+    @lists = List.all
+  end
+
+  def show
+    #findメソッドを利用してデータベースから:idのデータを取得
+    @list = List.find(params[:id])
   end
 
   private
