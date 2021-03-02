@@ -27,6 +27,9 @@ class TodolistsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+  def update
+  end
+
   private
   def list_params
     params.require(:list).permit(:title, :body)
