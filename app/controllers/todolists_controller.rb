@@ -1,36 +1,37 @@
 class TodolistsController < ApplicationController
   def new
-    #データが単数のため[@list]となっている
-    @list=List.new
+    @list = List.new  #データが単数のため[@list]
   end
 
   def create
-    #データを新規登録するためのインスタンス。viewを介さないため@なし
-    list = List.new(list_params)
-    #データをデータベースへ保存するためのsaveメソッド
-    list.save
-    #show.html.erbへリダイレクトさせて、投稿内容をすぐ閲覧できるようにする
-    redirect_to todolist_path(list.id)
+    list = List.new(list_params)        #データを新規登録するためのインスタンス。viewを介さないため@なし
+    list.save                           #データをデータベースへ保存するためのsaveメソッド
+    redirect_to todolist_path(list.id)  #show.html.erb（投稿一覧）へリダイレクトさせて、投稿内容をすぐ閲覧できるようにする
   end
 
   def index
-    #すべてのデータを取り込むため複数形[@lists]となっている
-    @lists = List.all
+    @lists = List.all #すべてのデータを取り込むため複数形[@lists]となっている
   end
 
   def show
-    #findメソッドを利用してデータベースから:idのデータを取得
-    @list = List.find(params[:id])
+    @list = List.find(params[:id]) #findメソッドを利用してデータベースから:idのデータを取得
+
   end
 
   def edit
-    @list = List.find(params[:id])
+    @list = List.find(params[:id]) #findメソッドを利用してデータベースから:idのデータを取得
   end
 
   def update
-    list = List.find(params[:id])
-    list.update(list_params)
-    redirect_to todolist_path(list.id)
+    list = List.find(params[:id])       #findメソッドを利用してデータベースから:idのデータを取得
+    list.update(list_params)            #データを更新
+    redirect_to todolist_path(list.id)  #show.html.erbへリダイレクトさせて、すぐ確認できるようにする
+  end
+
+  def destroy
+    list = List.find(params[:id])       #findメソッドを利用してデータベースから:idのデータを取得
+    list.destroy                        #データ（レコード）削除
+    redirect_to todolists_path(list.id) #index.html.erb（投稿一覧）へリダイレクトさせて、すぐ確認できるようにする
   end
 
   private
