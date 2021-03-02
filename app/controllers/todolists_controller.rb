@@ -25,14 +25,13 @@ class TodolistsController < ApplicationController
   def update
     list = List.find(params[:id])       #findメソッドを利用してデータベースから:idのデータを取得
     list.update(list_params)            #データを更新
-    redirect_to todolist_path(list.id)  #show.html.erb（投稿一覧）へリダイレクトさせて、すぐ確認できるようにする
+    redirect_to todolist_path(list.id)  #show.html.erbへリダイレクトさせて、すぐ確認できるようにする
   end
 
   def destroy
     @list = List.find(params[:id])      #findメソッドを利用してデータベースから:idのデータを取得
     list.destroy                        #データ（レコード）削除
-    redirect_to todolist_path(list.id)  #show.html.erb（投稿一覧）へリダイレクトさせて、すぐ確認できるようにする
-
+    redirect_to todolists_path(list.id)  #index.html.erb（投稿一覧）へリダイレクトさせて、すぐ確認できるようにする
   end
 
   private
