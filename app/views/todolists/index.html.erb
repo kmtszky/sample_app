@@ -7,4 +7,8 @@
   <span>
     <%= link_to list.title, todolist_path(list.id) %>
   </span>
+<!-- 投稿画像を表示するためattachment_image_tagを埋め込み。refile特有の書式 -->
+<!-- 画像の幅を:fillで指定し、高さをpxで指定、表示する画像の拡張子をformatで指定-->
+  <p>画像</p>
+  <%= attachment_image_tag list, :image, :fill, 100, 100, format: 'jpeg' %>
 <% end %>
