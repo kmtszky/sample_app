@@ -52,11 +52,16 @@ nav {
 }
 
 main {
-  width: 800px;
+  width: 880px;
   margin: 0 auto;
 }
 
 .list-wrap {
+  display: flex;
+  frex-wrap: wrap;
+}
+
+.list-box {
   width: 250px;
   height: 250px;
   margin: 10px;
