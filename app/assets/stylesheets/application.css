@@ -58,7 +58,7 @@ main {
 
 .list-wrap {
   display: flex;
-  fex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .list-box {
