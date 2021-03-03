@@ -79,11 +79,21 @@ main {
   bottom: 0;
 }
 
+/*「white-space: nowrap;」:テキストを折り返し表示させないようにするプロパティ*/
+/*「text-overflow: ellipsis;」:領域をはみ出したテキストを三点リーダー（...）で省略表示するプロパティ*/
 .list-body {
+  display: block;
   color: gray;
   font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .list-title {
+  display: block;
   font-size: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
