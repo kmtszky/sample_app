@@ -24,7 +24,7 @@ describe '投稿のテスト' do
     end
     context '表示の確認' do
       it 'todolists_new_pathが"/todolists/new"であるか' do
-        expect(current_page).to eq('/todolists/new')
+        expect(current_path).to eq('/todolists/new')
       end
       it '投稿ボタンが表示されているか' do
         expect(page).to have_button '投稿'
@@ -39,25 +39,43 @@ describe '投稿のテスト' do
       end
     end
   end
-  describe：一覧画面のテスト
-    before：一覧画面への遷移
-    context ：一覧の表示とリンクの確認
-      it：一覧表示画面に投稿されたもの表示されているか
-      テストコード
 
-  describe：詳細画面のテスト
-    before：詳細画面への遷移
-    context：表示のテスト
-      it：削除リンクが存在しているか
-        テストコード
-      it：編集リンクが存在しているか
-    context：リンクの遷移先の確認
-      it：編集の遷移先は編集画面か
-        テストコード
-    context：list削除のテスト
-      it：listの削除
-        テストコード
+  describe '一覧画面のテスト' do
+    before do
+      visit tosolists_path
+    end
+    context '一覧の表示とリンクの確認' do
+      it '一覧表示画面に投稿されたものが表示されているか' do
+        expect(page).to have_content list.title
+        expect(page).to have_link list.title
+      end
+    end
+  end
 
+  describe '詳細画面のテスト' do
+    before do
+      visit todolist_path(list)
+    end
+    context '表示のテスト' do
+      it '削除リンクが存在しているか' do
+        expect(page).to have_link '削除'
+      end
+      it '編集リンクが存在しているか' do
+        expect(page).to have_link '編集'
+      end
+    end
+    context 'リンクの遷移先の確認' do
+      it '編集の遷移先は編集画面か' do
+        edit_link = find_all('a')[0]
+        edit_link.click
+        expect(current_path).to eq('/todolists' + list.id.to_s + '/edit')
+      end
+    end
+    context 'list削除のテスト' do
+      it 'listの削除' do
+        テストコード
+      end
+    end
   describe：編集画面のテスト
     before：編集画面への遷移
     context：表示の確認
