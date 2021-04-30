@@ -10,3 +10,7 @@ List.create!(
   title: 'railsを学ぼう',
   body: 'seedファイルについて'
 )
+
+10.times do |number|
+  List.create!(title: 'timesを学習しよう', body: 'number')
+end
