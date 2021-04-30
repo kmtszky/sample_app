@@ -39,6 +39,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'awesome_print'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -62,7 +64,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# 画像投稿用Gem
 gem "refile", require: "refile/rails", github: 'manfe/refile'
-# 画像加工用（サイズ調整など）gem
 gem "refile-mini_magick"
+gem 'dotenv-rails'
