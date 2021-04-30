@@ -57,6 +57,8 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
